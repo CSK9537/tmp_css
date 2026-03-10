@@ -1,0 +1,198 @@
+.guide {
+  width: 100%;
+  color: var(--color-text-main);
+}
+
+/* =========================
+   상단 헤더 (HERO) - PlantMain과 일치
+========================= */
+.guide-hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 0 20px;
+  border-bottom: 2px solid var(--color-main-line);
+  margin-bottom: 20px;
+}
+
+.guide-hero__titlebox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guide-hero__title {
+  font-size: 26px; /* PlantMain 타이틀과 통일 */
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+  color: var(--color-bg-main);
+  letter-spacing: -0.02em;
+}
+
+.guide-hero__subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-main-muted);
+  font-style: italic;
+}
+
+.guide-hero__figure {
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  border: 1px solid var(--color-main-soft);
+  box-shadow: 0 10px 30px rgba(107, 123, 97, 0.15);
+}
+
+.guide-hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+
+/* =========================
+   섹션 공통 - PlantMain과 일치
+========================= */
+.guide-section {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.guide-section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 16px;
+}
+
+.guide-section__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-bg-main);
+  position: relative;
+  padding-left: 16px;
+}
+
+/* PlantMain의 동그란 주황색 점 적용 */
+.guide-section__title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-focus, #e2874a);
+}
+
+
+/* 본문 텍스트 (Article) */
+.guide-article {
+  width: 100%;
+  border: 1px solid var(--color-main-soft);
+  border-radius: var(--radius-lg, 16px);
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.guide-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: var(--color-text-main);
+  opacity: 0.9;
+}
+
+
+/* =========================
+   요약 정보 (기본 정보 그리드)
+========================= */
+.guide-summary { width: 100%; margin-top: 24px; }
+.summary-grid {
+  width: 100%; display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px; margin-top: 16px;
+}
+
+.summary-item {
+  border: 1px solid var(--color-main-soft);
+  border-radius: 12px; background: #ffffff; padding: 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.summary-item__label { font-size: 13px; color: var(--color-main-muted); }
+.summary-item__value { font-size: 15px; font-weight: 800; color: var(--color-bg-main); }
+
+
+/* =========================
+   Key-Value 리스트 (표 형태 대체)
+========================= */
+.guide-kv {
+  width: 100%; border: 1px solid var(--color-main-soft);
+  border-radius: var(--radius-lg, 16px); background: #ffffff;
+  padding: 0 24px; display: flex; flex-direction: column;
+  margin-bottom: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.guide-kv__row {
+  display: grid; grid-template-columns: 160px 1fr;
+  gap: 16px; align-items: start; padding: 18px 0;
+  border-bottom: 1px solid var(--color-main-soft);
+}
+.guide-kv__row:last-child { border-bottom: none; }
+.guide-kv__label { font-size: 14px; font-weight: 700; color: var(--color-main-muted); padding-top: 2px; }
+.guide-kv__value { font-size: 15px; font-weight: 700; color: var(--color-bg-main); word-break: break-word; line-height: 1.5; }
+
+
+/* =========================
+   온도 카드 (Temp Grid)
+========================= */
+.temp-grid {
+  width: 100%; display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px; margin-bottom: 16px;
+}
+
+.temp-card {
+  border: 1px solid var(--color-main-soft); border-radius: 12px;
+  background: #ffffff; padding: 18px;
+}
+.temp-card__title { margin: 0 0 8px 0; font-size: 13px; color: var(--color-main-muted); }
+.temp-card__value { margin: 0; font-size: 18px; font-weight: 800; color: var(--color-bg-main); }
+
+
+/* =========================
+   빈 화면 (Empty State) - 내부 요소만 남김
+========================= */
+.guide-empty__title { margin: 0; font-size: 20px; font-weight: 800; color: var(--color-bg-main); }
+.guide-empty__desc { margin: 12px 0 0 0; font-size: 15px; color: var(--color-main-muted); }
+
+
+/* =========================
+   반응형 (Responsive)
+========================= */
+@media (max-width: 1024px) {
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guide-kv__row { grid-template-columns: 140px 1fr; }
+}
+
+@media (max-width: 767px) {
+  .guide-hero__title { font-size: 24px; }
+  .guide-hero__figure { max-width: 100%; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .temp-grid { grid-template-columns: 1fr; }
+  .guide-kv__row { grid-template-columns: 1fr; gap: 8px; padding: 14px 0; }
+  .guide-kv__label { font-size: 13px; }
+  .guide-article { padding: 16px; }
+  .guide-text { font-size: 14px; }
+}

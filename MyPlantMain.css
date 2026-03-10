@@ -1,0 +1,87 @@
+/* MyPlantMain.css */
+.myplants { width: 100%; gap: 20px; }
+.content-card.myplants { align-items: stretch; padding-bottom: 40px; }
+
+.myplants__header { display: flex; justify-content: space-between; align-items: center; padding: 0 0 20px; border-bottom: 2px solid var(--color-main-line); margin-bottom: 20px; }
+.myplants__title { margin: 0; font-size: 26px; font-weight: 800; color: var(--color-bg-main); letter-spacing: -0.02em; }
+
+.myplants-empty { min-height: 360px; flex-direction: column; gap: 16px; margin-top: 10px; }
+.myplants-empty__title { margin: 0; font-size: 20px; font-weight: 800; color: var(--color-bg-main); }
+.myplants-empty__desc { margin: 0 0 10px 0; font-size: 15px; color: var(--color-main-muted); }
+
+.myplants-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 20px; }
+
+.plant-item { display: grid; grid-template-columns: 180px 200px 1fr minmax(0, 200px); column-gap: 30px; align-items: center; padding: 24px; background: #ffffff; border-radius: var(--radius-lg, 16px); border: 1px solid var(--color-main-soft); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.plant-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--color-main-line); }
+
+.plant-item__thumb { width: 180px; height: 180px; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--color-main-soft); }
+.plant-item__thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.plant-item__info { display: flex; flex-direction: column; gap: 16px; color: var(--color-bg-main); }
+.plant-item__nickname { font-size: 20px; font-weight: 800; color: var(--color-bg-main); }
+.plant-item__names { display: flex; flex-direction: column; gap: 4px; }
+.plant-item__korean { font-size: 15px; font-weight: 700; opacity: 0.9; }
+.plant-item__latin { font-size: 13px; font-style: italic; color: var(--color-main-muted); }
+
+.plant-item__status { align-self: stretch; display: flex; flex-direction: column; justify-content: center; border-left: 1px dashed var(--color-main-line); padding-left: 30px; }
+.plant-item__status-title { font-size: 14px; font-weight: 700; color: var(--color-main-muted); margin-bottom: 16px; }
+
+.status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+.status { display: flex; align-items: center; gap: 10px; }
+.status__label { width: 32px; height: 32px; object-fit: contain; background: var(--color-main-soft); border-radius: 8px; padding: 4px; }
+
+.status__value { font-weight: 800; font-size: 14px; white-space: nowrap; }
+.status__value--good { color: #2d8647; }
+.status__value--warn { color: #e2874a; }
+.status__value--bad { color: #d64040; }
+
+.plant-item__actions { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 12px; height: 100%; }
+.plant-item__since { font-size: 14px; color: var(--color-main-muted); margin-bottom: 8px; text-align: center; width: 100%; }
+.plant-item__since strong { font-size: 16px; color: var(--color-bg-main); font-weight: 800; }
+
+.mpm-modal { position: fixed; inset: 0; display: none; z-index: 9999; }
+.mpm-modal.is-open { display: block; }
+.mpm-modal__backdrop { position: absolute; inset: 0; }
+
+.mpm-modal__dialog { position: relative; width: min(600px, calc(100% - 40px)); margin: 80px auto; padding: 30px; }
+
+.mpm-modal__header { margin-bottom: 20px; }
+.mpm-modal__title { margin: 0; font-size: 24px; font-weight: 800; color: var(--color-bg-main); }
+
+.mpm-modal__search { position: relative; margin-bottom: 20px; }
+.mpm-modal__search-input { padding: 0 16px 0 40px; }
+.mpm-modal__search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--color-main-muted); font-size: 16px; }
+
+.mpm-list { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow-y: auto; border: 1px solid var(--color-main-line); border-radius: 12px; }
+.mpm-item { border-bottom: 1px solid var(--color-main-soft); }
+.mpm-item:last-child { border-bottom: none; }
+.mpm-item__row { display: flex; align-items: center; gap: 16px; padding: 12px 16px; cursor: pointer; transition: background 0.2s; }
+.mpm-item__row:hover { background: var(--color-main-soft); }
+.mpm-item__row:has(.mpm-item__radio:checked) { background: rgba(107, 123, 97, 0.12); }
+.mpm-item__radio { position: absolute; opacity: 0; pointer-events: none; }
+
+.mpm-item__thumb { width: 48px; height: 48px; border-radius: 8px; overflow: hidden; background: var(--color-main-soft); flex: 0 0 auto; }
+.mpm-item__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.mpm-item__text { display: flex; flex-direction: column; gap: 4px; }
+.mpm-item__korean { font-size: 15px; font-weight: 700; color: var(--color-bg-main); }
+.mpm-item__latin { font-size: 12px; font-style: italic; color: var(--color-main-muted); }
+
+.mpm-selected-preview { display: flex; align-items: center; gap: 16px; padding: 16px; margin-top: 20px; background: var(--color-main-soft); border-radius: 12px; border: 1px dashed var(--color-bg-main); }
+.mpm-modal__footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
+#confirmAddPlant:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; background: #ccc; }
+
+@media (max-width: 1024px) {
+  .plant-item { grid-template-columns: 160px 1fr minmax(0, 180px); grid-template-areas: "thumb info actions" "thumb status actions"; row-gap: 20px; align-items: start; }
+  .plant-item__thumb { width: 160px; height: 160px; grid-area: thumb; }
+  .plant-item__info { grid-area: info; }
+  .plant-item__status { grid-area: status; border-left: none; padding-left: 0; border-top: 1px dashed var(--color-main-line); padding-top: 16px; }
+  .plant-item__actions { grid-area: actions; justify-content: flex-start; }
+}
+@media (max-width: 768px) {
+  .plant-item { grid-template-columns: 1fr; grid-template-areas: "thumb" "info" "status" "actions"; padding: 20px; row-gap: 16px; }
+  .plant-item__thumb { width: 100%; height: 240px; }
+  .plant-item__actions { align-items: stretch; }
+  .plant-item__since { text-align: left; }
+  .status-grid { gap: 12px; }
+  .mpm-modal__dialog { padding: 20px; margin: 40px auto; }
+}
