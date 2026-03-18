@@ -1,21 +1,28 @@
-## 시스템 아키텍쳐
-// Home Sweet Farm System Architecture
+graph TD
+    subgraph "Hardware / IoT"
+        A[Arduino Sensors<br>토양수분, 온도 등]
+    end
 
-[Web Browser] {icon: chrome}
-[Arduino Sensors] {icon: cpu}
+    subgraph "Front-end (Client)"
+        B[Web Browser]
+        C[JSP / HTML / CSS / JS<br>UI & View Rendering]
+    end
 
-Spring Backend {
-  [Spring MVC] {icon: spring}
-  [WebSocket] {icon: server}
-  [MyBatis] {icon: database}
-}
+    subgraph "Back-end (Server)"
+        D[Spring MVC<br>Business Logic & API]
+        E[WebSocket<br>Real-time Chat & Data]
+        F[MyBatis<br>ORM / Data Mapper]
+    end
 
-[Oracle DB] {icon: oracle}
+    subgraph "Database"
+        G[(Oracle DB<br>Data Storage)]
+    end
 
-// Data Flow
-[Arduino Sensors] > [Spring MVC]: Sensor Data
-[Web Browser] <> [Spring MVC]: HTTP Request / Response (JSP)
-[Web Browser] <> [WebSocket]: Real-time Chat / Monitoring
-[Spring MVC] > [MyBatis]: Data Mapping
-[WebSocket] > [Spring MVC]: Sync
-[MyBatis] <> [Oracle DB]: Read / Write
+    %% 데이터 흐름
+    A -- "센서 데이터 전송 (HTTP/Socket)" --> D
+    B -- "페이지 요청 / API 호출" --> C
+    C -- "HTTP Request / Response" --> D
+    B <=="실시간 채팅 / 모니터링"==> E
+    D <--> F
+    F <--> G
+    E -. "데이터 동기화" .- D
